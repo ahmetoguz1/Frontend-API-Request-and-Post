@@ -1,0 +1,140 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.12/dist/sweetalert2.all.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
+  <title>Akgün Yazılım İnsan Kaynakları</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- Make div with name container for center navbar buttons-->
+        <div class="container">            
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="GenerateApplication.html">Başvuru Oluştur</a>
+              </li>
+              <li class="nav-item">
+                <a type = "button" id = "btnBasvuru" class="nav-link" >Başvuruları Görüntüle</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Make new div for Login button to make location where right side of the page -->          
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <p id="loginInformation" class="text-success" ></p>
+              <li class="nav-item">
+                <a id = "btnLoginHeader" class="nav-link btn btn-outline-success" href="Login.html">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>    
+</div>
+<div class="container mt-4">
+  <table class="table table-striped" id="applications">
+    <thead>
+      <th>ID</th>
+      <th>Ad</th>
+      <th>Soyad</th>
+      <th>Yas</th>
+      <th>Cinsiyet</th>
+      <th>Eğitim</th>
+      <th>İl</th>
+      <th>İlçe</th>
+      <th>Askerlik Durumu</th>
+      <th>Programlama Dilleri</th>
+      <th>Sertifikalara</th>
+      <th>Email</th>
+      <th>Telefon</th>
+    </thead>
+    <tbody id="myTable">      
+    </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Detaylı Arama
+    </button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container mt-5">
+          <div class="row">
+              <div class="col">
+                <label for="sel1">Yaş başlangıç</label>
+                  <input type="text" id = "txtAgeStart" class="form-control" placeholder="Yaş başlangıç">
+                </div>
+                <div class="col">
+                  <label for="sel1">Yaş bitiş</label>
+                  <input type="text" id = "txtAgeFinish" class="form-control" placeholder="Yaş bitiş">
+                </div>                
+          </div>
+          <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="drpMilitaryStatus">Askerlik Durumu</label>
+                    <select class="form-control" id="drpMilitaryStatus">
+                      <option>Yaptı</option>
+                      <option>Yapmadı</option>
+                      <option>Muaf</option>
+                    </select>
+                  </div>
+                </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="drpGender">Cinsiyet</label>
+                <select class="form-control" id="drpGender">
+                  <option>Erkek</option>
+                  <option>Kadın</option>                  
+                </select>
+              </div>
+            </div>
+      </div>
+  
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        <button id="btnApplyFilter" type="button" class="btn btn-primary">Filtreleri uygula</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="Models/Application.js"></script>
+<script src="js/ShowApplications.js"></script>
+<script src="Models/TokenParser.js"></script>
+
+
+</body>
+</html>
